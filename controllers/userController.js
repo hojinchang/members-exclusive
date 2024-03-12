@@ -41,16 +41,28 @@ exports.sign_up_post = [
 
     async(req, res, next) => {
         try {
+            // Validate results and render sign up page again if errors
             const errors = validationResults(req);
-
             if (!errors.isEmpty()) {
                 res.render("signupForm", {
                     title: "Sign Up",
                     firstName: req.body.firstName,
                     lastName: req.body.lastName,
                     username: req.body.username,
+                    errors: errors.array(),
                 });
                 return;
+            }
+
+            // Check if a user with the same username is already registered
+            const registeredUser = await User.findOne({ username: req.body.username }).exec();
+            if (registeredUser) {
+                res.render("signupForm", {
+                    title: "Sign Up",
+                    firstName: req.body.firstName,
+                    lastName: req.body.lastName,
+                    errors: ["Username already exists"]
+                })
             }
 
             // Hashing password using bcryptjs
