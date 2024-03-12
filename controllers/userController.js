@@ -1,5 +1,6 @@
 const User = require("../models/user");
 const asyncHandler = require("express-async-handler");
+const bcrypt = require("bcryptjs");
 
 exports.sign_up_get = asyncHandler(async (req, res, next) => {
     res.render("signupForm", { title: "Sign Up" });
@@ -52,7 +53,7 @@ exports.sign_up_post = [
                 return;
             }
 
-            
+            bcrypt/
 
         } catch(err) {
             return next(err)
