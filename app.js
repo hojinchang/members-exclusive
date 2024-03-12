@@ -9,7 +9,7 @@ const userRouter = require('./routes/user');
 
 var app = express();
 
-import 'dotenv/config';
+require("dotenv").config();
 
 // Connect to MongoDB database with mongoose
 const mongoose = require("mongoose");

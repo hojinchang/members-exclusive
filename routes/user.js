@@ -8,3 +8,6 @@ router.get("/sign-up", userController.sign_up_get);
 
 // Post request for creating a user
 router.post("/sign-up", userController.sign_up_post);
+
+
+module.exports = router;
