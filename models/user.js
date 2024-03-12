@@ -17,3 +17,5 @@ UserSchema.virtual("fullName").get(function() {
 
     return fullName;
 });
+
+module.exports = mongoose.model("User", UserSchema);
