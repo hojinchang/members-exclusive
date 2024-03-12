@@ -53,7 +53,22 @@ exports.sign_up_post = [
                 return;
             }
 
-            bcrypt/
+            // Hashing password using bcryptjs
+            bcrypt.hash(req.body.password, 10, async(err, hashedPassword) => {
+                if (err) {
+                    return next(err);
+                }
+
+                const user = new User({
+                    firstName: req.body.firstName,
+                    lastName: req.body.lastName,
+                    username: req.body.username,
+                    password: hashedPassword,
+                });
+
+                await user.save();
+                res.redirect("/user/log-in");
+            });
 
         } catch(err) {
             return next(err)
