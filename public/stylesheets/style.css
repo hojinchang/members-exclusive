@@ -13,6 +13,7 @@
   --font-family: "Open Sans", sans-serif;
   
   --header-height: 60px;
+  --footer-height: 50px;
 }
 
 /* base */
@@ -44,9 +45,11 @@ a:hover {
 
 /* layout */
 body {
+  min-height: 100vh;
   max-width: 2200px;
 	display: grid;
 	grid-template-columns: 1fr minmax(0, 1100px) 1fr;
+  grid-template-rows: auto minmax(0, 1fr) auto;
 	grid-template-areas:
     "header header header"
     ". main ."
@@ -63,17 +66,22 @@ body {
 
 .site-footer {
   grid-area: footer;
+  align-self: end;
 }
 
 /* components */
 .header-break {
-  margin: auto;
-  max-width: 1000px;
+  margin: 0 auto;
+  width: clamp(300px, 90%, 800px);
 }
 
 .secondary-break {
   margin: auto;
-  max-width: 600px;
+  width: clamp(300px, 90%, 600px);
+}
+
+.page-header {
+  font-size: 1.75rem;
 }
 
 /* Form */
@@ -115,8 +123,8 @@ input {
   padding: 0.5rem 1rem;
   background-color: var(--accent-colour);
   color: var(--text-colour);
-  font-size: 1em;
-  font-weight: 600;
+  font-size: 0.9em;
+  font-weight: 550;
   outline: none;
   border: none;
   border-radius: 6px;
@@ -197,6 +205,7 @@ input {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  padding: 1rem;
 }
 
 .site-navigation a {
@@ -221,6 +230,7 @@ input {
   .site-navigation ul {
     flex-direction: row;
     gap: 4rem;
+    padding: 0;
   }
 
   .site-navigation a {
@@ -295,15 +305,44 @@ input {
   padding: 1rem;
 }
 
-/* Sign up page */
-#signUpPage {
+.current-user {
+  text-align: right;
+}
+
+.current-user a {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--text-colour);
+  border-radius: 6px;
+  font-size: 1.05rem;
+  font-weight: 500;
+
+  transition: 0.3s background-color ease;
+}
+
+.current-user a:hover {
+  color: inherit;
+  background-color: var(--accent-colour);
+}
+
+/* Sign up / login page */
+#form-page {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
-#signUpPage .site-main {
+#form-page .site-main {
+  display: flex;
+  flex-direction: column;
   height: 100%;
+  padding-top: 4rem;
+  padding-bottom: 4rem; 
+}
+
+#form-page .logo-container {
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 .secondary-choice {
@@ -325,5 +364,5 @@ input {
   justify-content: center;
   align-items: center;
   background-color: var(--secondary-colour);
-  height: 50px;
+  height: var(--footer-height);
 }
