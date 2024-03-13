@@ -100,12 +100,6 @@ a:hover {
   font-size: 1.2em;
 }
 
-/* .logo-container,
-.hamburger-menu-container,
-.site-navigation {
-  padding: 0.5rem 1rem;
-} */
-
 /* navigation */
 .site-navigation {
   opacity: 0;
@@ -210,4 +204,14 @@ a:hover {
   stroke-dasharray: 90 207;
   stroke-dashoffset: -134;
   stroke-width: 6;
+}
+
+
+/* Footer */
+.site-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--secondary-colour);
+  height: 50px;
 }
