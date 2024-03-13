@@ -137,6 +137,7 @@ a:hover {
     opacity: 100;
     position: static;
     box-shadow: none;
+    visibility: visible;
   }
 
   .site-navigation ul {

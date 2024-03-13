@@ -8,6 +8,7 @@ hamburger.addEventListener("click", () => {
 function handleResize() {
     if (window.innerWidth > 800) {
         nav.classList.remove("show");
+        hamburger.classList.remove("opened");
     }
 }
 
