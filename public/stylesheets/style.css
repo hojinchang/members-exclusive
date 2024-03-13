@@ -76,6 +76,10 @@ body {
   width: clamp(300px, 90%, 600px);
 }
 
+.page-header {
+  font-size: 1.75rem;
+}
+
 /* Form */
 form {
   margin: 0 auto;
@@ -295,7 +299,7 @@ input {
   padding: 1rem;
 }
 
-/* Sign up page */
+/* Sign up / login page */
 #form-page {
   min-height: 100vh;
   display: flex;

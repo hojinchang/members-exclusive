@@ -9,11 +9,17 @@
 
         <section class="form-section">
             <div class="form-errors-container">
-                <% if (errors.length) { %>
+                <% if (errors && errors.length) { %>
                     <ul class="form-errors">
                         <% errors.forEach(error => { %>
                             <li><p class="error"><%- error.msg %></p></li>
                         <% }); %>
+                    </ul>
+                <% } %>
+
+                <% if (authentication_error && authentication_error.length) { %>
+                    <ul class="form-errors">
+                        <li><p class="error"><%- authentication_error %></p></li>
                     </ul>
                 <% } %>
             </div>
@@ -47,7 +53,7 @@
                 </div>
             </form>
             <hr class="secondary-break">
-            <p class="secondary-choice">Don't have an account?<a href="/user/login"> Sign up.</a></p>
+            <p class="secondary-choice">Don't have an account?<a href="/user/sign-up"> Sign up.</a></p>
 
         </section>
     </main>

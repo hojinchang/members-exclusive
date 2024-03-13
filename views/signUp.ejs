@@ -9,7 +9,7 @@
 
         <section class="form-section">
             <div class="form-errors-container">
-                <% if (errors.length) { %>
+                <% if (errors && errors.length) { %>
                     <ul class="form-errors">
                         <% errors.forEach(error => { %>
                             <li><p class="error"><%- error.msg %></p></li>
