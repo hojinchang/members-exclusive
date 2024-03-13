@@ -2,8 +2,13 @@
   <body>
     <%- include("partials/header") %>
     <main class="site-main">
-      <h1 class="page-header"><%= title %></h1>
-      <hr>
+      <div class="page-header-container">
+        <% if (currentUser) { %>
+          <p class="current-user"><a href="/"><%= currentUser.username %></a></p>
+        <% } %>
+        <h1 class="page-header"><%= title %></h1>
+        <hr>
+      </div>
     </main>
     <%- include("partials/footer") %>
   </body>

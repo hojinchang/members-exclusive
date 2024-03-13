@@ -13,6 +13,7 @@
   --font-family: "Open Sans", sans-serif;
   
   --header-height: 60px;
+  --footer-height: 50px;
 }
 
 /* base */
@@ -44,9 +45,11 @@ a:hover {
 
 /* layout */
 body {
+  min-height: 100vh;
   max-width: 2200px;
 	display: grid;
 	grid-template-columns: 1fr minmax(0, 1100px) 1fr;
+  grid-template-rows: auto minmax(0, 1fr) auto;
 	grid-template-areas:
     "header header header"
     ". main ."
@@ -63,6 +66,7 @@ body {
 
 .site-footer {
   grid-area: footer;
+  align-self: end;
 }
 
 /* components */
@@ -201,6 +205,7 @@ input {
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  padding: 1rem;
 }
 
 .site-navigation a {
@@ -225,6 +230,7 @@ input {
   .site-navigation ul {
     flex-direction: row;
     gap: 4rem;
+    padding: 0;
   }
 
   .site-navigation a {
@@ -299,6 +305,25 @@ input {
   padding: 1rem;
 }
 
+.current-user {
+  text-align: right;
+}
+
+.current-user a {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--text-colour);
+  border-radius: 6px;
+  font-size: 1.05rem;
+  font-weight: 500;
+
+  transition: 0.3s background-color ease;
+}
+
+.current-user a:hover {
+  color: inherit;
+  background-color: var(--accent-colour);
+}
+
 /* Sign up / login page */
 #form-page {
   min-height: 100vh;
@@ -339,5 +364,5 @@ input {
   justify-content: center;
   align-items: center;
   background-color: var(--secondary-colour);
-  height: 50px;
+  height: var(--footer-height);
 }
