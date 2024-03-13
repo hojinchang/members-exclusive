@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 const { body, validationResult } = require("express-validator");
 
 exports.sign_up_get = asyncHandler(async (req, res, next) => {
-    res.render("signupForm", { title: "Sign Up" });
+    res.render("signUp", { title: "Sign Up" });
 });
 
 exports.sign_up_post = [
@@ -20,7 +20,7 @@ exports.sign_up_post = [
         .escape(),
     body("username")
         .trim()
-        .isLength({ min: 1, max: 50 })
+        .isLength({ min: 1, max: 20 })
         .withMessage("Last Name must be between 1 and 50 characters")
         .escape(),
     body("password")
@@ -43,9 +43,9 @@ exports.sign_up_post = [
     async(req, res, next) => {
         try {
             // Validate results and render sign up page again if errors
-            const errors = validationResults(req);
+            const errors = validationResult(req);
             if (!errors.isEmpty()) {
-                res.render("signupForm", {
+                res.render("signUp", {
                     title: "Sign Up",
                     firstName: req.body.firstName,
                     lastName: req.body.lastName,
@@ -58,7 +58,7 @@ exports.sign_up_post = [
             // Check if a user with the same username is already registered
             const registeredUser = await User.findOne({ username: req.body.username }).exec();
             if (registeredUser) {
-                res.render("signupForm", {
+                res.render("signUp", {
                     title: "Sign Up",
                     firstName: req.body.firstName,
                     lastName: req.body.lastName,

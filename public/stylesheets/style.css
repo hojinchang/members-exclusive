@@ -8,6 +8,7 @@
   --primary-colour: #161714;
   --secondary-colour: #121210;
   --accent-colour: #4287f5;
+  --link-hover-colour: #166bf2;
   --text-colour: white;
   --font-family: "Open Sans", sans-serif;
   
@@ -42,7 +43,7 @@ a:hover {
 }
 
 /* layout */
-.site {
+body {
   max-width: 2200px;
 	display: grid;
 	grid-template-columns: 1fr minmax(0, 1100px) 1fr;
@@ -62,6 +63,17 @@ a:hover {
 
 .site-footer {
   grid-area: footer;
+}
+
+/* components */
+.header-break {
+  margin: auto;
+  max-width: 1000px;
+}
+
+.secondary-break {
+  margin: auto;
+  max-width: 600px;
 }
 
 /* Header */
@@ -215,6 +227,80 @@ a:hover {
 .page-header {
   text-align: center;
   padding: 1rem;
+}
+
+/* Sign up page */
+#signUpPage {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#signUpPage .site-main {
+  height: 100%;
+}
+
+form {
+  margin: 0 auto;
+  max-width: 500px;
+  padding: 2rem;
+}
+
+.form-input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+label {
+  font-size: 1.2rem;
+}
+
+input {
+  padding: 0.3rem 0.6rem;
+  font-size: 1.05rem;
+  outline: none;
+  border-radius: 6px;
+}
+
+.form-button-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.1rem;
+}
+
+.form-button-container button {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  background-color: var(--accent-colour);
+  color: var(--text-colour);
+  font-size: 1em;
+  font-weight: 600;
+  outline: none;
+  border: none;
+  border-radius: 6px;
+  transition: 0.3s background-color ease;
+}
+
+.form-button-container button:hover {
+  background-color: var(--link-hover-colour);
+}
+
+.secondary-choice {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.secondary-choice a {
+  color: var(--accent-colour);
+}
+
+.secondary-choice a:hover {
+  color: var(--link-hover-colour);
 }
 
 /* Footer */
