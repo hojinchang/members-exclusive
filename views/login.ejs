@@ -20,30 +20,6 @@
 
             <form method="POST">
                 <div class="form-input-container">
-                    <label for="firstName">First Name (*)</label>
-                    <input 
-                        type="text" 
-                        id="firstName" 
-                        name="firstName" 
-                        minlength="1" 
-                        maxlength="20"
-                        value="<%= firstName ? firstName : '' %>"
-                        required
-                    >
-                </div>
-                <div class="form-input-container">
-                    <label for="lastName">Last Name (*)</label>
-                    <input 
-                        type="text" 
-                        id="lastName" 
-                        name="lastName" 
-                        minlength="1" 
-                        maxlength="20" 
-                        value="<%= lastName ? lastName : '' %>"
-                        required
-                    >
-                </div>
-                <div class="form-input-container">
                     <label for="username">Username (*)</label>
                     <input 
                         type="text" 
@@ -65,23 +41,13 @@
                         required
                     >
                 </div>
-                <div class="form-input-container">
-                    <label for="passwordConfirm">Confirm Password (*)</label>
-                    <input 
-                        type="password" 
-                        id="passwordConfirm" 
-                        name="passwordConfirm" 
-                        minlength="1" 
-                        required
-                    >
-                </div>
                 <div class="form-button-container">
                     <p><a href="/posts">Cancel</a></p>
                     <button type="submit">Submit</button>
                 </div>
             </form>
             <hr class="secondary-break">
-            <p class="secondary-choice">Already have an account.<a href="/user/login"> Log in.</a></p>
+            <p class="secondary-choice">Don't have an account?<a href="/user/login"> Sign up.</a></p>
 
         </section>
     </main>

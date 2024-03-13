@@ -67,13 +67,13 @@ body {
 
 /* components */
 .header-break {
-  margin: auto;
-  max-width: 1000px;
+  margin: 0 auto;
+  width: clamp(300px, 90%, 800px);
 }
 
 .secondary-break {
   margin: auto;
-  max-width: 600px;
+  width: clamp(300px, 90%, 600px);
 }
 
 /* Form */
@@ -296,14 +296,24 @@ input {
 }
 
 /* Sign up page */
-#signUpPage {
+#form-page {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
-#signUpPage .site-main {
+#form-page .site-main {
+  display: flex;
+  flex-direction: column;
   height: 100%;
+  padding-top: 4rem;
+  padding-bottom: 4rem; 
+}
+
+#form-page .logo-container {
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 .secondary-choice {

@@ -3,7 +3,8 @@ const asyncHandler = require("express-async-handler");
 const bcrypt = require("bcryptjs");
 const { body, validationResult } = require("express-validator");
 
-exports.sign_up_get = asyncHandler(async (req, res, next) => {
+// Sign up get
+exports.sign_up_get = asyncHandler(async(req, res, next) => {
     res.render("signUp", { 
         title: "Sign Up",
         firstName: "",
@@ -13,6 +14,7 @@ exports.sign_up_get = asyncHandler(async (req, res, next) => {
     });
 });
 
+// Sign up post
 exports.sign_up_post = [
     body("firstName")
         .trim()
@@ -94,6 +96,13 @@ exports.sign_up_post = [
             return next(err)
         }
     }
-    
-
 ]
+
+// Login get
+exports.login_get = asyncHandler(async(req, res, next) => {
+    res.render("login", {
+        title: "Login to your account",
+        username: null,
+        errors: [],
+    })
+});
