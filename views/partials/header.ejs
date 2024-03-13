@@ -12,11 +12,20 @@
                 </svg>
             </button>
         </div>
-        <nav class="site-navigation">
-            <ul>
-                <li><a href="/user/login">Log In</a></li>
-                <li><a href="/user/sign-up">Sign Up</a></li>
-            </ul>
-        </nav>
+        <% if (currentUser) { %>
+            <nav class="site-navigation">
+                <ul>
+                    <li><a href="/posts/add">Add Post</a></li>
+                    <li><a href="/user/logout">Logout</a></li>
+                </ul>
+            </nav>
+        <% } else { %>
+            <nav class="site-navigation">
+                <ul>
+                    <li><a href="/user/login">Log In</a></li>
+                    <li><a href="/user/sign-up">Sign Up</a></li>
+                </ul>
+            </nav>
+        <% } %>
     </div>
 </header>

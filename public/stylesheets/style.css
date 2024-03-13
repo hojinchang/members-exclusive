@@ -119,8 +119,8 @@ input {
   padding: 0.5rem 1rem;
   background-color: var(--accent-colour);
   color: var(--text-colour);
-  font-size: 1em;
-  font-weight: 600;
+  font-size: 0.9em;
+  font-weight: 550;
   outline: none;
   border: none;
   border-radius: 6px;

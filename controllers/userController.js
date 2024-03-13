@@ -188,3 +188,14 @@ exports.login_post = [
         failureFlash: true    // Temporarily store error messages into the session
     }),
 ]
+
+// Logout
+exports.logout = asyncHandler(async (req, res, next) => {
+    req.logout((err) => {
+        if (err) {
+            return next(err);
+        }
+
+        res.redirect("/");
+    });
+})
