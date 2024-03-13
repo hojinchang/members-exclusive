@@ -5,26 +5,72 @@
         <hr class="header-break">
 
         <section class="form-section">
+            <div class="form-errors-container">
+                <% if (errors.length) { %>
+                    <ul class="form-errors">
+                        <% errors.forEach(error => { %>
+                            <li><p class="error"><%- error.msg %></p></li>
+                        <% }); %>
+                    </ul>
+                <% } %>
+            </div>
+
             <form method="POST">
                 <div class="form-input-container">
                     <label for="firstName">First Name (*)</label>
-                    <input type="text" id="firstName" name="firstName" minlength="1" maxlength="20" required>
+                    <input 
+                        type="text" 
+                        id="firstName" 
+                        name="firstName" 
+                        minlength="1" 
+                        maxlength="20"
+                        value="<%= firstName ? firstName : '' %>"
+                        required
+                    >
                 </div>
                 <div class="form-input-container">
                     <label for="lastName">Last Name (*)</label>
-                    <input type="text" id="lastName" name="lastName" minlength="1" maxlength="20" required>
+                    <input 
+                        type="text" 
+                        id="lastName" 
+                        name="lastName" 
+                        minlength="1" 
+                        maxlength="20" 
+                        value="<%= lastName ? lastName : '' %>"
+                        required
+                    >
                 </div>
                 <div class="form-input-container">
                     <label for="username">Username (*)</label>
-                    <input type="text" id="username" name="username" minlength="1" maxlength="20" required>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username"
+                        minlength="1" 
+                        maxlength="20" 
+                        value="<%= username ? username : '' %>"
+                        required
+                    >
                 </div>
                 <div class="form-input-container">
                     <label for="password">Password (*)</label>
-                    <input type="password" id="password" name="password" minlength="1" required>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        minlength="1" 
+                        required
+                    >
                 </div>
                 <div class="form-input-container">
-                    <label for="confirmPassword">Confirm Password (*)</label>
-                    <input type="password" id="confirmPassword" name="confirmPassword" minlength="1" required>
+                    <label for="passwordConfirm">Confirm Password (*)</label>
+                    <input 
+                        type="password" 
+                        id="passwordConfirm" 
+                        name="passwordConfirm" 
+                        minlength="1" 
+                        required
+                    >
                 </div>
                 <div class="form-button-container">
                     <p><a href="/posts">Cancel</a></p>

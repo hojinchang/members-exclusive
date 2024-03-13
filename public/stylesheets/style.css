@@ -76,6 +76,72 @@ body {
   max-width: 600px;
 }
 
+/* Form */
+form {
+  margin: 0 auto;
+  max-width: 500px;
+  padding: 2rem;
+}
+
+.form-input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+label {
+  font-size: 1.05rem;
+}
+
+input {
+  padding: 0.3rem 0.6rem;
+  font-size: 1.02rem;
+  outline: none;
+  border-radius: 6px;
+}
+
+.form-button-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.1rem;
+}
+
+.form-button-container button {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  background-color: var(--accent-colour);
+  color: var(--text-colour);
+  font-size: 1em;
+  font-weight: 600;
+  outline: none;
+  border: none;
+  border-radius: 6px;
+  transition: 0.3s background-color ease;
+}
+
+.form-button-container button:hover {
+  background-color: var(--link-hover-colour);
+}
+
+.form-errors-container {
+  display: flex;
+  max-width: 550px;
+  margin: 2rem auto 0;
+  padding: 0 2rem;
+}
+
+.form-errors {
+  list-style-type: disc;
+}
+
+.error {
+  color: red;
+}
+
 /* Header */
 .site-header {
   background-color: var(--secondary-colour);
@@ -231,63 +297,13 @@ body {
 
 /* Sign up page */
 #signUpPage {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
 #signUpPage .site-main {
   height: 100%;
-}
-
-form {
-  margin: 0 auto;
-  max-width: 500px;
-  padding: 2rem;
-}
-
-.form-input-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 0.6rem;
-  margin-bottom: 1rem;
-}
-
-label {
-  font-size: 1.2rem;
-}
-
-input {
-  padding: 0.3rem 0.6rem;
-  font-size: 1.05rem;
-  outline: none;
-  border-radius: 6px;
-}
-
-.form-button-container {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 1rem;
-  font-size: 1.1rem;
-}
-
-.form-button-container button {
-  cursor: pointer;
-  padding: 0.5rem 1rem;
-  background-color: var(--accent-colour);
-  color: var(--text-colour);
-  font-size: 1em;
-  font-weight: 600;
-  outline: none;
-  border: none;
-  border-radius: 6px;
-  transition: 0.3s background-color ease;
-}
-
-.form-button-container button:hover {
-  background-color: var(--link-hover-colour);
 }
 
 .secondary-choice {

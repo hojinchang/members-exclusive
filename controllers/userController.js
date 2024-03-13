@@ -4,7 +4,13 @@ const bcrypt = require("bcryptjs");
 const { body, validationResult } = require("express-validator");
 
 exports.sign_up_get = asyncHandler(async (req, res, next) => {
-    res.render("signUp", { title: "Sign Up" });
+    res.render("signUp", { 
+        title: "Sign Up",
+        firstName: "",
+        lastName: "",
+        username: "",
+        errors: []
+    });
 });
 
 exports.sign_up_post = [
@@ -34,7 +40,7 @@ exports.sign_up_post = [
         .trim()
         .custom((value, {req}) => {
             if (value !== req.body.password) {
-                throw new Error("Passwords don;t match")
+                throw new Error("Passwords don't match")
             }
             return true;
         })
@@ -56,13 +62,14 @@ exports.sign_up_post = [
             }
 
             // Check if a user with the same username is already registered
-            const registeredUser = await User.findOne({ username: req.body.username }).exec();
+            const registeredUser = await User.findOne({ username: new RegExp('^' + req.body.username + '$', 'i') }).exec();
             if (registeredUser) {
                 res.render("signUp", {
                     title: "Sign Up",
                     firstName: req.body.firstName,
                     lastName: req.body.lastName,
-                    errors: ["Username already exists"]
+                    username: null,
+                    errors: [{msg: "Username already exists"}]
                 })
             }
 
