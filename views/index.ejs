@@ -9,6 +9,26 @@
         <h1 class="page-header"><%= title %></h1>
         <hr>
       </div>
+      <% if (posts && posts.length) { %>
+        <section class="posts-section">
+        <% posts.forEach(post => { %>
+            <article class="post-article">
+              <div class="post-content">
+                <h3><%= post.title %></h3>
+                <p><%= post.message %></p>
+              </div>
+              <div class="post-meta">
+                <% if (currentUser) { %>
+                  <p><%= post.user.username %></p>
+                  <p><%= post.postTimeFormatted %></p>
+                <% } else { %>
+                  <p><em><a href="/">Become a member to see who posted this</a></em></p>
+                <% } %>
+              </div>
+            </article>
+            <% }) %>
+        </section>
+      <% } %>
     </main>
     <%- include("partials/footer") %>
   </body>

@@ -3,7 +3,15 @@ const asyncHandler = require("express-async-handler");
 const { body, validationResult } = require("express-validator");
 
 exports.post_get = asyncHandler(async (req, res, next) => {
-    res.render("index", { title: "Posts" });
+    const posts = await Post.find()
+                            .populate("user")
+                            .sort({ postTime: -1 })
+                            .exec();
+
+    res.render("index", { 
+        title: "Posts",
+        posts: posts
+    });
 });
 
 exports.post_add_get = asyncHandler(async (req, res, next) => {
