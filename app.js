@@ -26,8 +26,6 @@ async function main() {
   await mongoose.connect(process.env.MONGODB_URI);
 }
 
-console.log(process.env.SESSION_SECRET)
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

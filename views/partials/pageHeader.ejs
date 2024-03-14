@@ -1,0 +1,7 @@
+<div class="page-header-container">
+    <% if (currentUser) { %>
+      <p class="current-user"><a href="/user/become-admin"><%= currentUser.username %></a></p>
+    <% } %>
+    <h1 class="page-header"><%= title %></h1>
+    <hr>
+</div>

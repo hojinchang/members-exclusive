@@ -10,6 +10,7 @@
   --accent-colour: #4287f5;
   --link-hover-colour: #166bf2;
   --text-colour: white;
+  --admin-colour: #2504b8;
   --post-text-colour: #bababa;
   --font-family: "Open Sans", sans-serif;
   
@@ -210,6 +211,27 @@ textarea:focus {
 
 .characters-remaining {
   font-size: 0.9rem;
+}
+
+.mathQuestion {
+  color: var(--post-text-colour);
+}
+
+.admin-message {
+  position: absolute;
+  top: 5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  padding: 1rem 3rem;
+  background-color: var(--admin-colour);
+  border-radius: 8px;
+
+  transition: opacity 2s ease-out;
+}
+
+.admin-message.fade-out {
+  opacity: 0;
 }
 
 /* Header */

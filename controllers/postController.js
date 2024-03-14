@@ -10,7 +10,8 @@ exports.post_get = asyncHandler(async (req, res, next) => {
 
     res.render("index", { 
         title: "Posts",
-        posts: posts
+        posts: posts,
+        adminMessage: req.flash("adminMessage")
     });
 });
 
