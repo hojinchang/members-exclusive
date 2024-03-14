@@ -219,12 +219,26 @@ exports.become_admin_post = [
             return;
         }
 
+        // Check whether their answer is correct
         const answer = req.body.becomeAdmin;
         if (answer != 80.90) {
             req.flash("adminMessage", "Incorrect answer. Try again.");
             res.redirect("/");
             return;
         }
+
+        // Get the current user
+        const user = await User.findById(req.user.id).exec();
+
+        // Check if the user is already an admin
+        if (user.isAdmin) {
+            req.flash("adminMessage", "You are already an admin!");
+            res.redirect("/");
+            return;
+        }
+
+        user.isAdmin = true;
+        user.save();
 
         req.flash("adminMessage", "Congratulations! You are now an admin.");
         res.redirect("/");
