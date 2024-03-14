@@ -156,6 +156,10 @@ textarea:focus {
   color: red;
 }
 
+.characters-remaining {
+  font-size: 0.9rem;
+}
+
 /* Header */
 .site-header {
   background-color: var(--secondary-colour);
