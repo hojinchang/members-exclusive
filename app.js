@@ -9,14 +9,16 @@ const flash = require("connect-flash");
 
 var indexRouter = require('./routes/index');
 const userRouter = require('./routes/user');
-const postsRouter = require('./routes/posts');
+const postRouter = require('./routes/post');
 
 var app = express();
 
+// Load environment variables
 require("dotenv").config();
 
 // Connect to MongoDB database with mongoose
 const mongoose = require("mongoose");
+const MongoStore = require('connect-mongo');
 mongoose.set("strictQuery", false);
 
 main().catch((err) => console.log(err));
@@ -24,13 +26,22 @@ async function main() {
   await mongoose.connect(process.env.MONGODB_URI);
 }
 
+console.log(process.env.SESSION_SECRET)
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // Session support and initialize passport
-app.use(session({ secret: process.env.SESSION_SECRET, resave: false, saveUninitialized: true }));
+app.use(session({ 
+  secret: process.env.SESSION_SECRET, 
+  resave: false, 
+  saveUninitialized: false,
+  store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI }),
+  cookie: {
+    maxAge: 24 * 60 * 60 * 1000   // Session expires after 24 hours
+  }
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
@@ -47,7 +58,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/user', userRouter);
-app.use('/posts', postsRouter);
+app.use('/posts', postRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
