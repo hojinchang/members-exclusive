@@ -97,6 +97,7 @@ body {
 }
 
 .post-article {
+  position: relative;
   max-width: 500px;
   width: 100%;
   padding: 2rem;
@@ -125,6 +126,21 @@ body {
 
 .post-article .post-meta a {
   color: var(--link-hover-colour);
+}
+
+.post-article .delete-post-container {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.post-article .delete-post {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  line-height: 1.3rem;
+  font-size: 1.5rem;
+  text-align: center;
 }
 
 @media screen and (min-width: 50em) {

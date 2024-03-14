@@ -54,3 +54,11 @@ exports.post_add_post = [
         res.redirect("/");
     })
 ]
+
+// Delete a post
+exports.post_delete = asyncHandler(async(req, res, next) => {
+    const postId = req.params.id;
+    await Post.findByIdAndDelete(postId);
+
+    res.redirect("/");
+});

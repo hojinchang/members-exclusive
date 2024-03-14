@@ -14,6 +14,9 @@
         <section class="posts-section">
         <% posts.forEach(post => { %>
             <article class="post-article">
+              <% if (currentUser && currentUser.isAdmin) { %>
+                <div class="delete-post-container"><a class="delete-post" href="posts/delete/<%= post.id %>">&times</a></div>
+              <% } %>
               <div class="post-content">
                 <h3><%= post.title %></h3>
                 <p><%= post.message %></p>
