@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title || "Default Title" %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/javascripts/postMessageCharacterCount.js" defer></script>
+  </head>
+  <body>
+    <%- include("partials/header") %>
+    <main class="site-main">
+      <div class="page-header-container">
+        <% if (currentUser) { %>
+          <p class="current-user"><a href="/"><%= currentUser.username %></a></p>
+        <% } %>
+        <h1 class="page-header"><%= title %></h1>
+        <hr>
+      </div>
+
+      <form method="POST">
+        <div class="form-input-container">
+            <label for="postTitle">Title (*)</label>
+            <input 
+                type="text" 
+                id="postTitle" 
+                name="postTitle" 
+                minlength="1" 
+                maxlength="50"
+                value="<%= postTitle ? postTitle : '' %>"
+                required
+            >
+        </div>
+        <div class="form-input-container">
+            <label for="message">Message (*)</label>
+            <textarea id="message" name="message" cols="30" rows="8" maxlength="200" required></textarea>
+        </div>
+        <div class="form-button-container">
+            <p><a href="/posts">Cancel</a></p>
+            <button type="submit">Submit</button>
+        </div>
+      </form>
+    </main>
+    <%- include("partials/footer") %>
+  </body>
+</html>

@@ -18,4 +18,4 @@ UserSchema.virtual("fullName").get(function() {
     return fullName;
 });
 
-module.exports = mongoose.model("Users", UserSchema);
+module.exports = mongoose.model("User", UserSchema);
