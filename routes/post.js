@@ -9,5 +9,6 @@ router.get("/", postController.post_get);
 // GET request to add a post
 router.get("/add", requireAuth, postController.post_add_get);
 
+router.post("/add", requireAuth, postController.post_add_post);
 
 module.exports = router;
