@@ -198,4 +198,49 @@ exports.logout = asyncHandler(async (req, res, next) => {
 
         res.redirect("/");
     });
-})
+});
+
+// Become an admin
+exports.become_admin_get = asyncHandler(async (req, res, next) => {
+    res.render("becomeAdmin", {
+        title: "Become an Admin"
+    })
+});
+
+exports.become_admin_post = [
+    body("becomeAdmin")
+        .trim()
+        .escape(),
+
+    asyncHandler(async(req, res, next) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            res.redirect("/");
+            return;
+        }
+
+        // Check whether their answer is correct
+        const answer = req.body.becomeAdmin;
+        if (answer != 80.90) {
+            req.flash("adminMessage", "Incorrect answer. Try again.");
+            res.redirect("/");
+            return;
+        }
+
+        // Get the current user
+        const user = await User.findById(req.user.id).exec();
+
+        // Check if the user is already an admin
+        if (user.isAdmin) {
+            req.flash("adminMessage", "You are already an admin!");
+            res.redirect("/");
+            return;
+        }
+
+        user.isAdmin = true;
+        user.save();
+
+        req.flash("adminMessage", "Congratulations! You are now an admin.");
+        res.redirect("/");
+    })
+]

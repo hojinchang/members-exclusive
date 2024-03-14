@@ -10,6 +10,8 @@
   --accent-colour: #4287f5;
   --link-hover-colour: #166bf2;
   --text-colour: white;
+  --admin-colour: #2504b8;
+  --post-text-colour: #bababa;
   --font-family: "Open Sans", sans-serif;
   
   --header-height: 60px;
@@ -84,6 +86,73 @@ body {
   font-size: 1.75rem;
 }
 
+/* Posts */
+.posts-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 4rem;
+}
+
+.post-article {
+  position: relative;
+  max-width: 500px;
+  width: 100%;
+  padding: 2rem;
+  background-color: var(--secondary-colour);
+  border-radius: 8px;
+}
+
+.post-article .post-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.post-article .post-content p {
+  color: var(--post-text-colour);
+}
+
+.post-article .post-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.post-article .post-meta a {
+  color: var(--link-hover-colour);
+}
+
+.post-article .delete-post-container {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.post-article .delete-post {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  line-height: 1.3rem;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+@media screen and (min-width: 50em) {
+  .post-article .post-meta a {
+    color: var(--text-colour);
+  }
+
+  .post-article .post-meta a:hover {
+    color: var(--link-hover-colour);
+  }
+}
+
 /* Form */
 form {
   margin: 0 auto;
@@ -154,6 +223,31 @@ textarea:focus {
 
 .error {
   color: red;
+}
+
+.characters-remaining {
+  font-size: 0.9rem;
+}
+
+.mathQuestion {
+  color: var(--post-text-colour);
+}
+
+.admin-message {
+  position: absolute;
+  top: 5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  padding: 1rem 3rem;
+  background-color: var(--admin-colour);
+  border-radius: 8px;
+
+  transition: opacity 2s ease-out;
+}
+
+.admin-message.fade-out {
+  opacity: 0;
 }
 
 /* Header */
@@ -313,6 +407,10 @@ textarea:focus {
 
 .current-user {
   text-align: right;
+}
+
+.current-user.admin a {
+  background-color: var(--admin-colour);
 }
 
 .current-user a {

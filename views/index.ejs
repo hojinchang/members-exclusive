@@ -2,13 +2,37 @@
   <body>
     <%- include("partials/header") %>
     <main class="site-main">
-      <div class="page-header-container">
-        <% if (currentUser) { %>
-          <p class="current-user"><a href="/"><%= currentUser.username %></a></p>
-        <% } %>
-        <h1 class="page-header"><%= title %></h1>
-        <hr>
-      </div>
+      <%- include("partials/pageHeader") %>
+
+      <% if (adminMessage && adminMessage.length) { %>
+        <div class="admin-message">
+          <p><%= adminMessage %></p>
+        </div>
+      <% } %>
+      
+      <% if (posts && posts.length) { %>
+        <section class="posts-section">
+        <% posts.forEach(post => { %>
+            <article class="post-article">
+              <% if (currentUser && currentUser.isAdmin) { %>
+                <div class="delete-post-container"><a class="delete-post" href="posts/delete/<%= post.id %>">&times</a></div>
+              <% } %>
+              <div class="post-content">
+                <h3><%= post.title %></h3>
+                <p><%= post.message %></p>
+              </div>
+              <div class="post-meta">
+                <% if (currentUser) { %>
+                  <p><%= post.user.username %></p>
+                  <p><%= post.postTimeFormatted %></p>
+                <% } else { %>
+                  <p><em><a href="/user/sign-up">Become a member to see who posted this</a></em></p>
+                <% } %>
+              </div>
+            </article>
+            <% }) %>
+        </section>
+      <% } %>
     </main>
     <%- include("partials/footer") %>
   </body>

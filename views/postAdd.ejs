@@ -12,13 +12,7 @@
   <body>
     <%- include("partials/header") %>
     <main class="site-main">
-      <div class="page-header-container">
-        <% if (currentUser) { %>
-          <p class="current-user"><a href="/"><%= currentUser.username %></a></p>
-        <% } %>
-        <h1 class="page-header"><%= title %></h1>
-        <hr>
-      </div>
+      <%- include("partials/pageHeader") %>
 
       <form method="POST">
         <div class="form-input-container">
@@ -35,6 +29,7 @@
         <div class="form-input-container">
             <label for="message">Message (*)</label>
             <textarea id="message" name="message" cols="30" rows="8" maxlength="200" required></textarea>
+            <p class="characters-remaining">Characters Remaining: <span class="nCharacters">200</span>/200</p>
         </div>
         <div class="form-button-container">
             <p><a href="/posts">Cancel</a></p>

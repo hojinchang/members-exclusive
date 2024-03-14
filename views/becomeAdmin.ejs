@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title || "Default Title" %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body id="form-page">
+    <main class="site-main">
+        <div class="logo-container">
+            <p><a href="/">members<em>Exclusive</em></a></p>
+        </div>
+        <h1 class="page-header"><%= title %></h1>
+        <hr class="header-break">
+
+        <section class="form-section">
+            <form method="POST">
+                <div class="form-input-container">
+                    <label for="becomeAdmin">Answer the following simple question to become an admin.</label>
+                    <p class="mathQuestion">Evaluate the derivative of the function at x = 3 (give answer with 4 significant figures):</p>
+                    <p class="mathQuestion">f(x) = 3x^3 + 2cos(x) + 5</p>
+                    <input 
+                        type="number" 
+                        id="becomeAdmin" 
+                        name="becomeAdmin"
+                        step="any"
+                        required
+                    >
+                </div>
+                <div class="form-button-container">
+                    <p><a href="/posts">Cancel</a></p>
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </section>
+    </main>
+    <%- include("partials/footer") %>
+  </body>
+</html>
